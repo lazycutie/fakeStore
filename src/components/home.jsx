@@ -1,8 +1,7 @@
 import './style.css'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
+import  Stack  from 'react-bootstrap/Stack';
 import { addtoCart } from '../redux/features/cartSlice';
 import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
@@ -59,15 +58,15 @@ const home = (props) => {
       <section className='item_section mt-4 container d-flex justify-content-center'>
         <div className="p-2"><h2 className='px-4' style={{ fontWeight: "400px" }}>Welcome to MY FAKE STORE</h2>
         </div>
-      </section>
-      <span id='ex4'style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-        <NavLink to="/cart" className="text decoration-none text-light mx-2"> 
-            <span style={{ color: "#475F7B", fontSize: "30px" }}>To Cart</span>
-            <span className='p1 fa-stack fa-2x has-badge' style={{ color: "#475F7B" }} data-count={carts.length}>
-              <i style={{ color: "#475F7B" }} className="fa-solid fa-cart-shopping"></i>
+      </section>{carts.length>0?<span id='ex4'style={{display:"flex",justifyContent:"center",alignItems:"end"}}>
+        <Button variant="light" size='sm' style={{position:"fixed",bottom:"0",zIndex:"3",opacity:"0.7"}}><NavLink to="/cart" className="text decoration-none text-light mx-2"> 
+            <span style={{ color: "#475F7B", fontSize: "30px", marginRight:"20px"}}>To Cart</span>
+            <span className='p1 fa-stack fa-2x has-badge' style={{ color: "black"}} data-count={carts.length}>
+              <i style={{ color: "#475F7B", fontSize:"20px"}} className="fa-solid fa-cart-shopping"></i>
             </span>
-        </NavLink>
-      </span>
+        </NavLink></Button>
+      </span>:""}
+      
       <div className='row mt-2 d-flex justify-content-around align-items-center'>
         {loading && <img src={Loader} className=' d-flex justify-content-center align-items-center' style={{ width: "300px" }} />}
         {!loading &&
@@ -93,21 +92,17 @@ const home = (props) => {
                 </div>
               </Card>
             )
-          })}
-
-        <ButtonToolbar aria-label="Toolbar with button groups" style={{ display: "flex", justifyContent: "center" }}>
-
-          <ButtonGroup className="me-2" aria-label="Second group">
-
-            <Button disabled={skips.current == 0} onClick={prevv}>previous</Button>
-          </ButtonGroup>
-          <ButtonGroup aria-label="Third group">
-            <Button disabled={Math.ceil((skips.current + 1) / 9) >= Math.ceil(total / 9)} onClick={nexxt}>next</Button>
-          </ButtonGroup>
-        </ButtonToolbar>
+          })} 
+      <Stack direction="horizontal" gap={3}>
+      <div className="p-2">  <Button disabled={skips.current == 0} onClick={prevv}>previous</Button></div>
+      <div className="p-2 ms-auto"><Button disabled={Math.ceil((skips.current + 1) / 9) >= Math.ceil(total / 9)} onClick={nexxt}>next</Button></div>
+     
+    </Stack>
       </div>
     </div>
   )
 }
 
 export default home
+
+
