@@ -57,7 +57,7 @@ const home = (props) => {
   return (
     <div>
       <section className='item_section mt-4 container d-flex justify-content-center'>
-        <div className="p-2"><h2 className='px-4' style={{ fontWeight: "400px" }}>Welcome to MY FAKE STOREzz</h2>
+        <div className="p-2"><h2 className='px-4' style={{ fontWeight: "400px" }}>Welcome to MY FAKE STORE</h2>
         </div>
       </section>
       <span id='ex4'style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
