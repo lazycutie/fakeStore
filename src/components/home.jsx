@@ -6,7 +6,7 @@ import { addtoCart } from '../redux/features/cartSlice';
 import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
 import { useEffect, useRef, useState } from 'react'
-import Loader from './Spinner@1x-1.0s-200px-200px.gif'
+import Loader from './output-onlinegiftools.gif'
 import { getItems } from './Items';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
